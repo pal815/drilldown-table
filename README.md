@@ -68,7 +68,10 @@ drilldown-table/
 ```
 
 **엔진 단일 소스**: `drilldown_table.py`가 정본이며, `app/`(빌드 시 번들)과 Claude/Codex 스킬 설치본이 이를 사용합니다.
-별도 위치(`~/.claude/skills/…`, `~/.codex/skills/…`)에 설치된 사본은 이 리포에서 동기화하세요.
+별도 위치(`~/.claude/skills/…`, `~/.codex/skills/…`)에 설치된 사본은 [`sync.ps1`](sync.ps1)로 동기화합니다:
+```powershell
+.\sync.ps1            # Claude + Codex 둘 다 (엔진·예시·렌더, Claude는 SKILL/plugin 포함)
+```
 
 ## 요구 사항
 - Python 3.10+ (개발/스킬 사용 시). 끝사용자는 EXE/웹이면 **불필요**.
