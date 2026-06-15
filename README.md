@@ -10,7 +10,31 @@
 - **다단계** — 대분류>중분류>… 깊이 2~4단계 자동 인식(행·열), 합계 줄 생략 시 자동 합산, 가지별 깊이 달라도 됨
 - 단일 IR(공용 중간표현) → 3 렌더러. 양식은 v14로 동결.
 
-> 샘플 출력은 [`samples/`](samples/)에, GUI 미리보기 썸네일은 [`app/assets/previews/`](app/assets/previews/)에 있습니다.
+## 결과 예시
+
+**다단계(depth 2~4)** — 상위 ▸ 중간 ▸ 세부를 ┌ 모양으로 묶는 행 기준 표(가지별 깊이 달라도 됨):
+
+![다단계 결과 예시](docs/images/multilevel_color.png)
+
+**열 기준(`column`)** — 항목이 가로로 펼쳐지고 세부가 아래로:
+
+![열 기준 결과](docs/images/column_color.png)
+
+**행+열 2D 교차표(`both`)** — 좌상단 코너에 `행 ＼ 열`, 양방향 드릴다운:
+
+![행+열 2D 결과](docs/images/both_color.png)
+
+**테마 3가지** — `color` · `grey` · `mono`:
+
+<table><tr>
+<td><img src="docs/images/row_color.png" width="280" alt="color 테마"></td>
+<td><img src="docs/images/row_grey.png" width="280" alt="grey 테마"></td>
+<td><img src="docs/images/row_mono.png" width="280" alt="mono 테마"></td>
+</tr><tr>
+<td align="center"><b>color</b></td><td align="center"><b>grey</b></td><td align="center"><b>mono</b></td>
+</tr></table>
+
+> 위 스크린샷은 [`docs/make_screenshots.py`](docs/make_screenshots.py)로 재생성합니다(Windows + Excel 필요). 원본 산출물은 [`samples/`](samples/) 참고.
 
 ---
 
