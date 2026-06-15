@@ -1,0 +1,13 @@
+# 텍스트 기본: 자동 정규화, 저장소엔 LF
+* text=auto eol=lf
+
+# Windows 스크립트는 CRLF 유지
+*.ps1 text eol=crlf
+
+# 바이너리(줄끝 변환·diff 금지)
+*.xlsx binary
+*.docx binary
+*.pptx binary
+*.png  binary
+*.ico  binary
+*.pdf  binary

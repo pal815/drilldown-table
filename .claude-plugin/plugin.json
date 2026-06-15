@@ -1,0 +1,9 @@
+{
+  "name": "drilldown-table",
+  "version": "1.0.0",
+  "description": "드릴다운(corner-header / ┌, 일명 ㄱ자) 계층형 표 생성기 — 상위 항목을 좌상단 코너에 두고 세부(drill-through)를 옆·아래로 ┌ 모양으로 펼쳐 묶는 기업 보고서식 표를 Excel·Word·PowerPoint 3종, 컬러/그레이/테두리만 3테마, 행/열/행+열 3방향으로 생성. 공용 IR 단일 소스.",
+  "author": "pal815",
+  "keywords": ["table", "corner-header", "drill-down", "drilldown", "ㄱ자", "기역자", "xlsx", "docx", "pptx", "report"],
+  "skills": ["./SKILL.md"],
+  "commands": ["./commands/drilldown-table.md"]
+}

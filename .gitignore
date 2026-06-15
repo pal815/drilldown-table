@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# PyInstaller 빌드 산출물
+app/build/
+app/dist/
+app/*.spec
+
+# 생성/배포 산출물 (재생성: py app/build_web.py)
+app/drilldown_web.html
+*.zip
+**/SHA256SUMS.txt
+
+# 코드서명 비밀키 (절대 커밋 금지)
+*.pfx
+*.p12
+*.snk
+
+# 스크래치/로그
+_*.log
+_*.json
+_pkg/
+
+# OS
+Thumbs.db
+.DS_Store
