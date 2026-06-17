@@ -1,0 +1,30 @@
+# 드릴다운(┌, 일명 ㄱ자) 표 데이터 — orient: row / column 공용 스키마
+# (row=항목 세로·세부 아래로, column=항목 가로·세부 오른쪽으로 — 같은 데이터로 둘 다 생성 가능)
+
+title: "2024년 사업부별 실적"      # 표 제목(선택)
+unit: "단위: 억원 / %"             # 우측 상단 단위 표기(선택)
+corner_label: "사업부"             # 좌상단 코너 라벨(선택)
+attributes: [매출, 영업이익, 점유율]   # 속성(지표) 헤더
+
+items:
+  - label: A사업부
+    summary: [1200, 180, "21%"]    # 항목 합계 줄(선택; 생략하면 합계 줄 없음). %는 문자열로.
+    details:
+      - { label: Q1, values: [280, 38, "20%"] }
+      - { label: Q2, values: [300, 42, "21%"] }
+      - { label: Q3, values: [300, 48, "22%"] }
+      - { label: Q4, values: [320, 52, "21%"] }
+  - label: B사업부
+    summary: [800, 90, "12%"]
+    details:
+      - { label: Q1, values: [180, 18, "11%"] }
+      - { label: Q2, values: [200, 22, "12%"] }
+      - { label: Q3, values: [210, 24, "12%"] }
+      - { label: Q4, values: [210, 26, "13%"] }
+  - label: C사업부
+    summary: [2100, 520, "33%"]
+    details:
+      - { label: Q1, values: [480, 110, "31%"] }
+      - { label: Q2, values: [510, 125, "32%"] }
+      - { label: Q3, values: [540, 135, "34%"] }
+      - { label: Q4, values: [570, 150, "35%"] }

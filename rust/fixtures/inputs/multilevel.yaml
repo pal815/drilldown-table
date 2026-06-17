@@ -1,0 +1,20 @@
+title: "2024년 사업부별 실적 (다단계)"
+unit: "단위: 억원 / %"
+level_labels: [사업부, 지역, 분기]
+attributes: [매출, 영업이익]
+nodes:
+  - label: A사업부
+    summary: [1200, 180]
+    children:
+      - label: 국내
+        summary: [700, 120]
+        children:
+          - {label: Q1, values: [300, 55]}
+          - {label: Q2, values: [400, 65]}
+      - label: 해외
+        values: [500, 60]
+  - label: B사업부
+    summary: [1000, 230]
+    children:
+      - {label: Q1, values: [480, 110]}
+      - {label: Q2, values: [520, 120]}

@@ -25,6 +25,14 @@ _*.log
 _*.json
 _pkg/
 
+# Rust 빌드 산출물 / 스크래치 (바이너리는 bin/ 에 커밋, Cargo.lock 은 커밋)
+rust/target/
+rust/_verify/
+rust/_codex_build.log
+rust/fixtures/baseline/
+rust/vendor/
+rust/.cargo/
+
 # OS
 Thumbs.db
 .DS_Store

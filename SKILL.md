@@ -45,14 +45,28 @@ data: { A사업부: { 국내: { "2023": { 상반기: 700, 하반기: 750 }, ... 
 ```
 숫자는 그대로(천단위 자동), 퍼센트는 `"21%"` 문자열(엔진이 실수+서식으로 변환).
 
-## 3. 생성
-데이터를 작업 디렉터리에 `data.yaml`로 쓴 뒤:
+## 3. 생성 (xlsx·docx = 네이티브 바이너리[Python 불필요] / pptx = Python)
+데이터를 작업 디렉터리에 `data.yaml`로 쓴 뒤, **출력 포맷으로 분기**한다.
+
+**① xlsx · docx → 프리빌트 Rust 바이너리** (`$SKILL/bin/`에 플랫폼별 동봉, Python 불필요):
+```bash
+case "$(uname -s)" in
+  MINGW*|MSYS*|CYGWIN*|Windows*) BIN="$SKILL/bin/windows-x64/drilldown-table.exe" ;;
+  Darwin) [ "$(uname -m)" = arm64 ] && BIN="$SKILL/bin/macos-arm64/drilldown-table" || BIN="$SKILL/bin/macos-x64/drilldown-table" ;;
+  *) BIN="$SKILL/bin/linux-x64/drilldown-table" ;;
+esac
+"$BIN" data.yaml out.xlsx <orient> <theme>      # out.docx 도 동일
+```
+바이너리가 그 플랫폼에 없거나 실패하면 **Python으로 폴백**: `py "$SKILL/drilldown_table.py" data.yaml out.xlsx <orient> <theme>`.
+
+**② pptx → Python 엔진** (바이너리 미지원, Python 필요):
 ```
 py "$SKILL/drilldown_table.py" data.yaml out.pptx <orient> <theme>
 ```
-예: `py "$SKILL/drilldown_table.py" data.yaml 실적.xlsx column grey`
-- 여러 방향/테마를 한 번에: 파이썬으로 `import drilldown_table as G; G.generate(데이터, 경로, orient, theme)` 반복 호출,
-  또는 한 워크북에 여러 시트는 `G.build_workbook([(model,'row'),(model,'column'),...], path, theme)`.
+- `<orient>`=`row|column|both`, `<theme>`=`color|grey|mono`. 바이너리·Python 출력은 동일한 v14 양식.
+- 여러 방향/테마 일괄(Python): `import drilldown_table as G; G.generate(데이터, 경로, orient, theme)` 반복,
+  또는 한 워크북 다중 시트는 `G.build_workbook([(model,'row'),(model,'column'),...], path, theme)`.
+- 바이너리는 단일 소스 엔진(`drilldown_table.py`)을 Rust로 포팅한 것으로 xlsx/docx 출력이 byte 수준으로 동일하게 검증됨(`rust/` 참조).
 
 ## 4. 검수 (선택, 권장)
 - Excel: `py "$SKILL/render_png.py" out.xlsx` → PNG. PPT: `render_pptx_png.py`. Word: `render_docx_png.py`(Word COM→PDF→PNG).

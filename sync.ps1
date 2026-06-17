@@ -24,6 +24,8 @@ function Sync-Common([string]$dst) {
   New-Item -ItemType Directory $dst -Force | Out-Null
   foreach ($f in $engineFiles) { Copy-Item (Join-Path $root $f) (Join-Path $dst $f) -Force }
   Copy-Dir (Join-Path $root 'examples') (Join-Path $dst 'examples')
+  # 프리빌트 Rust 바이너리(xlsx/docx Python 불필요). 있으면 동봉.
+  if (Test-Path (Join-Path $root 'bin')) { Copy-Dir (Join-Path $root 'bin') (Join-Path $dst 'bin') }
 }
 
 if ($Claude) {

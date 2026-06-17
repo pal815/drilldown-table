@@ -11,3 +11,4 @@
 *.png  binary
 *.ico  binary
 *.pdf  binary
+*.exe  binary

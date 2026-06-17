@@ -1,0 +1,22 @@
+[package]
+name = "drilldown-table"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "drilldown-table"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+rust_xlsxwriter = "0.95"
+docx-rs = "0.4"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

@@ -12,8 +12,10 @@ argument-hint: <데이터 설명 또는 데이터 파일 경로> [orient: row|co
    불명확하면 기본값(row·color·xlsx)으로 진행하되 한 줄로 알린다. 데이터가 모호하면 먼저 질문한다.
 2. 데이터를 `$SKILL/examples/`의 스키마에 맞춰 `data.yaml`로 작성한다
    (row/column → `sample_column.yaml`, both → `sample_both.yaml`). 퍼센트는 `"21%"` 문자열, 계/총계는 both에서 자동 합산.
-3. 생성: `py "$SKILL/drilldown_table.py" data.yaml OUT.<ext> <orient> <theme>`.
-   여러 방향/테마/시트가 필요하면 `import drilldown_table as G` 후 `G.generate(...)` 또는 `G.build_workbook([...], path, theme)`.
+3. 생성 — **xlsx·docx는 프리빌트 바이너리(Python 불필요), pptx는 Python**:
+   - xlsx/docx: `"$SKILL/bin/<platform>/drilldown-table[.exe]" data.yaml OUT.<ext> <orient> <theme>` (플랫폼 분기는 SKILL.md §3 참조). 바이너리 없으면 `py "$SKILL/drilldown_table.py" …`로 폴백.
+   - pptx: `py "$SKILL/drilldown_table.py" data.yaml OUT.pptx <orient> <theme>`.
+   - 여러 방향/테마/시트(Python): `import drilldown_table as G` 후 `G.generate(...)` 또는 `G.build_workbook([...], path, theme)`.
 4. 검수: `py "$SKILL/render_png.py|render_pptx_png.py|render_docx_png.py" OUT` 로 PNG 렌더 → 직접 확인.
    필요한 패키지(openpyxl/python-docx/python-pptx/PyYAML)가 없으면 `py -m pip install` 안내.
 5. 결과(파일 경로 + 사용한 옵션 + 렌더 이미지)를 보고한다.
